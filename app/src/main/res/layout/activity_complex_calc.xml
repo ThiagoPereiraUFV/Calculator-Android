@@ -86,26 +86,35 @@
             app:layout_constraintTop_toTopOf="@id/four"
             app:layout_constraintLeft_toRightOf="@id/five"
         />
-        <Button
-            android:id="@+id/one"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:text="3"
-            android:tag="add"
-            android:onClick="handleClick"
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/group32"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/four"
             app:layout_constraintLeft_toLeftOf="parent"
-        />
-        <Button
-            android:id="@+id/two"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:text="2"
-            android:tag="add"
-            android:onClick="handleClick"
-            app:layout_constraintTop_toTopOf="@id/one"
-            app:layout_constraintLeft_toRightOf="@id/one"
-        />
+        >
+            <Button
+                android:id="@+id/one"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:text="3"
+                android:tag="add"
+                android:onClick="handleClick"
+                app:layout_constraintTop_toBottomOf="@id/four"
+                app:layout_constraintLeft_toLeftOf="parent"
+            />
+            <Button
+                android:id="@+id/two"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:text="2"
+                android:tag="add"
+                android:onClick="handleClick"
+                app:layout_constraintTop_toTopOf="@id/one"
+                app:layout_constraintLeft_toRightOf="@id/one"
+            />
+        </androidx.constraintlayout.widget.ConstraintLayout>
         <Button
             android:id="@+id/three"
             android:layout_width="60dp"
@@ -113,8 +122,28 @@
             android:text="1"
             android:tag="add"
             android:onClick="handleClick"
-            app:layout_constraintTop_toTopOf="@id/one"
-            app:layout_constraintLeft_toRightOf="@id/two"
+            app:layout_constraintTop_toTopOf="@id/group32"
+            app:layout_constraintLeft_toRightOf="@id/group32"
+        />
+        <Button
+            android:id="@+id/zero"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="0"
+            android:tag="add"
+            android:onClick="handleClick"
+            app:layout_constraintTop_toBottomOf="@id/group32"
+            app:layout_constraintLeft_toLeftOf="parent"
+        />
+        <Button
+            android:id="@+id/dot"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="."
+            android:tag="add"
+            android:onClick="handleClick"
+            app:layout_constraintTop_toBottomOf="@id/group32"
+            app:layout_constraintRight_toRightOf="parent"
         />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
