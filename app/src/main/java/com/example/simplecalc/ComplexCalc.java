@@ -50,30 +50,22 @@ public class ComplexCalc extends AppCompatActivity {
         Log.d("Ciclo", getLocalClassName() +  ": Activity destruída!");
     }
 
-    public void handleClick(Button v) {
+    public void handleClick(View v) {
         //  Getting button attributes
-        final String tag = (String) v.getTag();
-        final String btn = (String) v.getText();
+        final String tag = (String) (((Button) v).getTag());
+        final String btn = (String) (((Button) v).getText());
 
         //  Defining expression View
         final EditText expression = (EditText) findViewById(R.id.expression);
 
         switch(tag) {
-            case "add":
-                result.setText("O resultado é: " + (value1 + value2));
+            case "backspace":
+                expression.setText(expression.getText().subSequence(0, expression.getText().length()));
                 break;
-            case "sub":
-                result.setText("O resultado é: " + (value1 - value2));
+            case "clear":
+                expression.setText("");
                 break;
-            case "mul":
-                result.setText("O resultado é: " + (value1 * value2));
-                break;
-            case "div":
-                if(value2 == 0) {
-                    result.setText("Divisão por zero é ilegal!");
-                } else {
-                    result.setText("O resultado é: " + (value1 / value2));
-                }
+            case "result":
                 break;
             case "simple":
                 finish();
