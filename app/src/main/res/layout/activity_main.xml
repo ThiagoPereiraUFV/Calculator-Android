@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:text="Complex"
         android:tag="change"
+        android:onClick="handleClick"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="10dp"
