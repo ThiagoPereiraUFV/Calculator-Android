@@ -5,13 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 public class ComplexCalc extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,22 +50,13 @@ public class ComplexCalc extends AppCompatActivity {
         Log.d("Ciclo", getLocalClassName() +  ": Activity destruída!");
     }
 
-    public void handleClick(View v) {
-        //  Defining views
+    public void handleClick(Button v) {
+        //  Getting button attributes
         final String tag = (String) v.getTag();
-        final TextView result = (TextView) findViewById(R.id.result);
+        final String btn = (String) v.getText();
 
-        //  Defining values variables
-        double value1;
-        double value2;
-
-        try {
-            value1 = Double.parseDouble(String.valueOf(((EditText) findViewById(R.id.value1)).getText()));
-            value2 = Double.parseDouble(String.valueOf(((EditText) findViewById(R.id.value2)).getText()));
-        } catch(Exception e) {
-            result.setText("Preencha os dois campos!");
-            return;
-        }
+        //  Defining expression View
+        final EditText expression = (EditText) findViewById(R.id.expression);
 
         switch(tag) {
             case "add":
@@ -87,6 +79,7 @@ public class ComplexCalc extends AppCompatActivity {
                 finish();
                 break;
             default:
+                expression.setText(expression.getText() + btn);
                 break;
         }
     }
