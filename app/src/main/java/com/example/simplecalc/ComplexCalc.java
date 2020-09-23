@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
+
 public class ComplexCalc extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,22 +58,56 @@ public class ComplexCalc extends AppCompatActivity {
         final String btn = (String) (((Button) v).getText());
 
         //  Defining expression View
-        final EditText expression = (EditText) findViewById(R.id.expression);
+        final TextView expression = (TextView) findViewById(R.id.expression);
 
         switch(tag) {
             case "backspace":
-                expression.setText(expression.getText().subSequence(0, expression.getText().length()));
+                if(expression.getText().length() > 0) {
+                    expression.setText(expression.getText().subSequence(0, expression.getText().length() - 1));
+                }
                 break;
             case "clear":
                 expression.setText("");
                 break;
             case "result":
+                int index = -1;
+                for(String c : new String[]{"+", "-", "/", "*"}) {
+                    index = expression.getText().toString().indexOf(c);
+                    if(index != -1) {
+                        break;
+                    }
+                }
+                final String[] exp = expression.getText().toString().split("[+\\-*/]");
+                if(Array.getLength(exp) != 2) {
+                    return;
+                } else {
+                    final double v1 = Double.parseDouble(exp[0]), v2 = Double.parseDouble(exp[1]);
+                    final String op = Character.toString(expression.getText().toString().charAt(index));
+
+                    if(op.equals("+")) {
+                        expression.setText(Double.toString(v1 + v2));
+                    } else if(op.equals("-")) {
+                        expression.setText(Double.toString(v1 - v2));
+                    } else if(op.equals("*")) {
+                        expression.setText(Double.toString(v1 * v2));
+                    } else if(op.equals("/") && v2 > 0){
+                        expression.setText(Double.toString(v1 / v2));
+                    }
+                }
                 break;
-            case "simple":
+            case "change":
                 finish();
-                break;
+                return;
             default:
-                expression.setText(expression.getText() + btn);
+                if(btn.matches("[+\\-*/]")) {
+                    if((Character.toString(expression.getText().charAt(expression.getText().length() - 1)).matches("[+\\-*/]"))) {
+                        break;
+                    } else {
+                        expression.setText(expression.getText() + btn);
+                    }
+                } else {
+                    expression.setText(expression.getText() + btn);
+                }
                 break;
         }
     }

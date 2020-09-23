@@ -60,6 +60,12 @@ public class MainActivity extends AppCompatActivity {
 		double value1;
 		double value2;
 
+		if(tag.equals("change")) {
+			final Intent it = new Intent(getBaseContext(), ComplexCalc.class);
+			startActivity(it);
+			return;
+		}
+
 		try {
 			value1 = Double.parseDouble(String.valueOf(((EditText) findViewById(R.id.value1)).getText()));
 			value2 = Double.parseDouble(String.valueOf(((EditText) findViewById(R.id.value2)).getText()));
@@ -85,9 +91,6 @@ public class MainActivity extends AppCompatActivity {
 					result.setText("O resultado é: " + (value1 / value2));
 				}
 				break;
-			case "complex":
-				final Intent it = new Intent(getBaseContext(), ComplexCalc.class);
-				startActivity(it);
 			default:
 				break;
 		}
