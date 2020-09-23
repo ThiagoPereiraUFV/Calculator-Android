@@ -99,8 +99,8 @@ public class ComplexCalc extends AppCompatActivity {
                 finish();
                 return;
             default:
-                if(btn.matches("[+\\-*/]")) {
-                    if((Character.toString(expression.getText().charAt(expression.getText().length() - 1)).matches("[+\\-*/]"))) {
+                if(btn.matches("[+\\-*/.]")) {
+                    if(expression.getText().length() == 0 || Character.toString(expression.getText().charAt(expression.getText().length() - 1)).matches("[+\\-*/.]")) {
                         break;
                     } else {
                         expression.setText(expression.getText() + btn);
