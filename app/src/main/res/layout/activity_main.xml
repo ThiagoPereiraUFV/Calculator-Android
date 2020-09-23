@@ -66,6 +66,7 @@
         android:layout_height="70dp"
         android:text="+"
         android:tag="add"
+        android:onClick="handleClick"
         app:layout_constraintTop_toBottomOf="@id/value2"
         app:layout_constraintLeft_toLeftOf="@id/textValue1"
         android:layout_marginTop="50dp" />
@@ -76,6 +77,7 @@
         android:layout_height="70dp"
         android:text="-"
         android:tag="sub"
+        android:onClick="handleClick"
         app:layout_constraintTop_toTopOf="@id/add"
         app:layout_constraintLeft_toRightOf="@id/add" />
 
@@ -85,6 +87,7 @@
         android:layout_height="70dp"
         android:text="*"
         android:tag="mul"
+        android:onClick="handleClick"
         app:layout_constraintTop_toTopOf="@id/add"
         app:layout_constraintRight_toRightOf="@id/value2" />
 
@@ -94,6 +97,7 @@
         android:layout_height="70dp"
         android:text="/"
         android:tag="div"
+        android:onClick="handleClick"
         app:layout_constraintTop_toTopOf="@id/add"
         app:layout_constraintRight_toLeftOf="@id/mul" />
 

@@ -3,17 +3,45 @@ package com.example.simplecalc;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-	private String value1;
-	private String value2;
+	private double value1;
+	private double value2;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
-		value1 = value2 = "";
-
 		setContentView(R.layout.activity_main);
+	}
+
+	public void handleClick(View v) {
+		final String tag = (String) v.getTag();
+		TextView result = (TextView) findViewById(R.id.result);
+		this.value1 = Double.parseDouble(String.valueOf(((EditText) findViewById(R.id.value1)).getText()));
+		this.value2 = Double.parseDouble(String.valueOf(((EditText) findViewById(R.id.value2)).getText()));
+
+		switch(tag) {
+			case "add":
+				result.setText("O resultado é: " + (value1 + value2));
+				break;
+			case "sub":
+				result.setText("O resultado é: " + (value1 - value2));
+				break;
+			case "mul":
+				result.setText("O resultado é: " + (value1 * value2));
+				break;
+			case "div":
+				if(value2 == 0) {
+					result.setText("Divisão por zero é ilegal!");
+				} else {
+					result.setText("O resultado é: " + (value1 / value2));
+				}
+				break;
+		}
 	}
 }
