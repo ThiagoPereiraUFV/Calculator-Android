@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity {
 	private double value1;
 	private double value2;
@@ -22,8 +24,13 @@ public class MainActivity extends AppCompatActivity {
 	public void handleClick(View v) {
 		final String tag = (String) v.getTag();
 		TextView result = (TextView) findViewById(R.id.result);
-		this.value1 = Double.parseDouble(String.valueOf(((EditText) findViewById(R.id.value1)).getText()));
-		this.value2 = Double.parseDouble(String.valueOf(((EditText) findViewById(R.id.value2)).getText()));
+		try {
+			this.value1 = Double.parseDouble(String.valueOf(((EditText) findViewById(R.id.value1)).getText()));
+			this.value2 = Double.parseDouble(String.valueOf(((EditText) findViewById(R.id.value2)).getText()));
+		} catch(Exception e) {
+			result.setText("Preencha os dois campos!");
+			return;
+		}
 
 		switch(tag) {
 			case "add":

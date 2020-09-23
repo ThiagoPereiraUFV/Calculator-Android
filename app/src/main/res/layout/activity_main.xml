@@ -62,8 +62,8 @@
 
     <Button
         android:id="@+id/add"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:text="+"
         android:tag="add"
         android:onClick="handleClick"
@@ -73,8 +73,8 @@
 
     <Button
         android:id="@+id/sub"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:text="-"
         android:tag="sub"
         android:onClick="handleClick"
@@ -83,8 +83,8 @@
 
     <Button
         android:id="@+id/mul"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:text="*"
         android:tag="mul"
         android:onClick="handleClick"
@@ -93,8 +93,8 @@
 
     <Button
         android:id="@+id/div"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:text="/"
         android:tag="div"
         android:onClick="handleClick"
