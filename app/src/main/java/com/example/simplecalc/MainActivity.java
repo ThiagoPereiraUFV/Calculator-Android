@@ -2,6 +2,7 @@ package com.example.simplecalc;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.util.Log;
@@ -84,6 +85,9 @@ public class MainActivity extends AppCompatActivity {
 					result.setText("O resultado é: " + (value1 / value2));
 				}
 				break;
+			case "complex":
+				final Intent it = new Intent(getBaseContext(), ComplexCalc.class);
+				startActivity(it);
 			default:
 				break;
 		}
