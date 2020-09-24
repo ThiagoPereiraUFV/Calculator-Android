@@ -58,7 +58,7 @@ public class ComplexCalc extends AppCompatActivity {
         final String btn = (String) (((Button) v).getText());
 
         //  Defining expression View
-        final TextView expression = (TextView) findViewById(R.id.expression);
+        final EditText expression = (EditText) findViewById(R.id.expression);
 
         switch(tag) {
             case "backspace":
