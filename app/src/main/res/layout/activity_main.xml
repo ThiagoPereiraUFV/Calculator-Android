@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
+    tools:context=".MainActivity"
+>
     <Button
         android:id="@+id/changeCalc"
         android:layout_width="wrap_content"
@@ -16,100 +16,109 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp" />
-
-    <TextView
-        android:id="@+id/textValue1"
+        android:layout_marginEnd="10dp"
+    />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/screen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/value1"
-        android:textSize="25sp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/changeCalc"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="80dp"
-        android:layout_marginStart="50dp"/>
-
-    <EditText
-        android:id="@+id/value1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="numberDecimal"
-        android:textSize="25sp"
-        app:layout_constraintTop_toBottomOf="@id/textValue1"
-        app:layout_constraintLeft_toLeftOf="@id/textValue1"
-        android:layout_marginTop="20dp" />
-
-    <TextView
-        android:id="@+id/textValue2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/value2"
-        android:textSize="25sp"
-        app:layout_constraintTop_toBottomOf="@id/value1"
-        app:layout_constraintLeft_toLeftOf="@id/textValue1"
-        android:layout_marginTop="50dp" />
-
-    <EditText
-        android:id="@+id/value2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="numberDecimal"
-        android:textSize="25sp"
-        app:layout_constraintTop_toBottomOf="@id/textValue2"
-        app:layout_constraintLeft_toLeftOf="@id/textValue2"
-        android:layout_marginTop="20dp" />
-
-    <Button
-        android:id="@+id/add"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="+"
-        android:tag="add"
-        android:onClick="handleClick"
-        app:layout_constraintTop_toBottomOf="@id/value2"
-        app:layout_constraintLeft_toLeftOf="@id/textValue1"
-        android:layout_marginTop="50dp" />
-
-    <Button
-        android:id="@+id/sub"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="-"
-        android:tag="sub"
-        android:onClick="handleClick"
-        app:layout_constraintTop_toTopOf="@id/add"
-        app:layout_constraintLeft_toRightOf="@id/add" />
-
-    <Button
-        android:id="@+id/mul"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="*"
-        android:tag="mul"
-        android:onClick="handleClick"
-        app:layout_constraintTop_toTopOf="@id/add"
-        app:layout_constraintRight_toRightOf="@id/value2" />
-
-    <Button
-        android:id="@+id/div"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="/"
-        android:tag="div"
-        android:onClick="handleClick"
-        app:layout_constraintTop_toTopOf="@id/add"
-        app:layout_constraintRight_toLeftOf="@id/mul" />
-
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="20dp"
+    >
+        <TextView
+            android:id="@+id/textValue1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/value1"
+            android:textSize="25sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+        />
+        <EditText
+            android:id="@+id/value1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:textSize="25sp"
+            app:layout_constraintTop_toBottomOf="@id/textValue1"
+            app:layout_constraintLeft_toLeftOf="@id/textValue1"
+            android:layout_marginTop="20dp"
+        />
+        <TextView
+            android:id="@+id/textValue2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/value2"
+            android:textSize="25sp"
+            app:layout_constraintTop_toBottomOf="@id/value1"
+            app:layout_constraintLeft_toLeftOf="@id/textValue1"
+            android:layout_marginTop="50dp"
+        />
+        <EditText
+            android:id="@+id/value2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:textSize="25sp"
+            app:layout_constraintTop_toBottomOf="@id/textValue2"
+            app:layout_constraintLeft_toLeftOf="@id/textValue2"
+            android:layout_marginTop="20dp"
+        />
+        <Button
+            android:id="@+id/add"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="+"
+            android:tag="add"
+            android:onClick="handleClick"
+            app:layout_constraintTop_toBottomOf="@id/value2"
+            app:layout_constraintLeft_toLeftOf="@id/textValue1"
+            android:layout_marginTop="50dp"
+        />
+        <Button
+            android:id="@+id/sub"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="-"
+            android:tag="sub"
+            android:onClick="handleClick"
+            app:layout_constraintTop_toTopOf="@id/add"
+            app:layout_constraintLeft_toRightOf="@id/add"
+        />
+        <Button
+            android:id="@+id/mul"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="*"
+            android:tag="mul"
+            android:onClick="handleClick"
+            app:layout_constraintTop_toTopOf="@id/add"
+            app:layout_constraintRight_toRightOf="@id/value2"
+        />
+        <Button
+            android:id="@+id/div"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="/"
+            android:tag="div"
+            android:onClick="handleClick"
+            app:layout_constraintTop_toTopOf="@id/add"
+            app:layout_constraintRight_toLeftOf="@id/mul"
+        />
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <TextView
         android:id="@+id/result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/result"
         android:textSize="25sp"
-        app:layout_constraintTop_toBottomOf="@id/value2"
+        app:layout_constraintTop_toBottomOf="@id/screen"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="180dp" />
+    />
 </androidx.constraintlayout.widget.ConstraintLayout>

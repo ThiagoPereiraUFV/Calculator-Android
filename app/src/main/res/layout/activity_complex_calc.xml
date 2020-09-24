@@ -23,22 +23,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:textSize="25sp"
+        android:textSize="30sp"
+        android:textAlignment="viewEnd"
         android:inputType="text"
         android:enabled="false"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/changeCalc"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="60dp"
     />
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/calcButtons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/expression"
+        app:layout_constraintTop_toTopOf="@id/expression"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="50dp"
     >
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/numbers"
@@ -110,7 +111,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/group32"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/four"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -135,6 +136,16 @@
                     app:layout_constraintTop_toTopOf="@id/one"
                     app:layout_constraintLeft_toRightOf="@id/one"
                 />
+                <Button
+                    android:id="@+id/zero"
+                    android:layout_width="fill_parent"
+                    android:layout_height="60dp"
+                    android:text="0"
+                    android:tag="zero"
+                    android:onClick="handleClick"
+                    app:layout_constraintTop_toBottomOf="@id/one"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                />
             </androidx.constraintlayout.widget.ConstraintLayout>
             <Button
                 android:id="@+id/three"
@@ -147,24 +158,14 @@
                 app:layout_constraintLeft_toRightOf="@id/group32"
             />
             <Button
-                android:id="@+id/zero"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:text="0"
-                android:tag="zero"
-                android:onClick="handleClick"
-                app:layout_constraintTop_toBottomOf="@id/group32"
-                app:layout_constraintLeft_toLeftOf="parent"
-            />
-            <Button
                 android:id="@+id/dot"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:text="."
                 android:tag="dot"
                 android:onClick="handleClick"
-                app:layout_constraintTop_toBottomOf="@id/group32"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/three"
+                app:layout_constraintLeft_toRightOf="@id/group32"
             />
         </androidx.constraintlayout.widget.ConstraintLayout>
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -217,7 +218,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/groupaddsub"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="120dp"
                 app:layout_constraintTop_toBottomOf="@id/clear"
                 app:layout_constraintLeft_toLeftOf="parent"
             >
@@ -241,17 +242,17 @@
                     app:layout_constraintTop_toBottomOf="@id/sub"
                     app:layout_constraintLeft_toLeftOf="parent"
                 />
+                <Button
+                    android:id="@+id/result"
+                    android:layout_width="60dp"
+                    android:layout_height="fill_parent"
+                    android:text="="
+                    android:tag="result"
+                    android:onClick="handleClick"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toRightOf="@id/add"
+                />
             </androidx.constraintlayout.widget.ConstraintLayout>
-            <Button
-                android:id="@+id/result"
-                android:layout_width="60dp"
-                android:layout_height="fill_parent"
-                android:text="="
-                android:tag="result"
-                android:onClick="handleClick"
-                app:layout_constraintTop_toTopOf="@id/groupaddsub"
-                app:layout_constraintLeft_toRightOf="@id/groupaddsub"
-            />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
