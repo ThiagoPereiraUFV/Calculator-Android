@@ -110,20 +110,21 @@ public class ComplexCalc extends AppCompatActivity {
 				finish();
 				return;
 			default:
-				if(btn.matches("[+\\-*/.]")) {
+				if(btn.matches("[+\\-*/]")) {
 					if(expression.getText().length() == 0) {
-						break;
-					} else if(Character.toString(expression.getText().charAt(expression.getText().length() - 1)).matches("\\.")) {
 						break;
 					} else if(expression.getText().toString().contains("+") || expression.getText().toString().contains("-") ||
 							expression.getText().toString().contains("*") || expression.getText().toString().contains("/")) {
 						break;
-					} else {
-						expression.setText(expression.getText() + btn);
 					}
-				} else {
-					expression.setText(expression.getText() + btn);
+				} else if(btn.matches("\\.")) {
+					if(expression.getText().length() == 0) {
+						break;
+					} else if(Character.toString(expression.getText().charAt(expression.getText().length() - 1)).matches("\\.")) {
+						break;
+					}
 				}
+				expression.setText(expression.getText() + btn);
 				Log.d("DebugCalc", "Adicionou novo símbolo");
 				break;
 		}
