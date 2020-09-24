@@ -20,17 +20,18 @@
     />
     <EditText
         android:id="@+id/expression"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="1"
         android:ems="10"
-        android:textSize="30sp"
+        android:textSize="70sp"
         android:textAlignment="viewEnd"
         android:inputType="text"
         android:enabled="false"
         app:layout_constraintTop_toBottomOf="@id/changeCalc"
+        app:layout_constraintBottom_toTopOf="@id/calcButtons"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="60dp"
     />
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/calcButtons"
@@ -44,8 +45,10 @@
     >
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/numbers"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.6"
+            app:layout_constraintHeight_percent="1"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -181,8 +184,10 @@
 
             <Button
                 android:id="@+id/dot"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="0dp"
+                android:layout_width="0dp"
+                app:layout_constraintWidth_percent="0.33"
+                app:layout_constraintHeight_percent="0.25"
                 android:onClick="handleClick"
                 android:tag="dot"
                 android:text="."
