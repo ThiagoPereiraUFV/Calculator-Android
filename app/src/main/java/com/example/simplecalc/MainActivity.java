@@ -3,15 +3,14 @@ package com.example.simplecalc;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
-import android.text.Editable;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.io.IOException;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 	@Override
@@ -51,15 +50,17 @@ public class MainActivity extends AppCompatActivity {
 		Log.d("Ciclo", getLocalClassName() +  ": Activity destruída!");
 	}
 
-	public void handleClick(View v) {
+	//  Function to return string from resources given id
+	private String getResourceString(final int id) {
+		return getApplicationContext().getResources().getString(id);
+	}
+
+	public void handleClick(final View v) {
 		//  Defining views
 		final String tag = (String) v.getTag();
 		final TextView result = (TextView) findViewById(R.id.result);
 
-		//  Defining values variables
-		double value1;
-		double value2;
-
+		//  Verify if user clicked to change calculator
 		if(tag.equals("change")) {
 			final Intent it = new Intent(getBaseContext(), ComplexCalc.class);
 			startActivity(it);
@@ -67,32 +68,39 @@ public class MainActivity extends AppCompatActivity {
 		}
 
 		try {
-			value1 = Double.parseDouble(String.valueOf(((EditText) findViewById(R.id.value1)).getText()));
-			value2 = Double.parseDouble(String.valueOf(((EditText) findViewById(R.id.value2)).getText()));
-		} catch(Exception e) {
-			result.setText(getApplicationContext().getResources().getString(R.string.fillFields));
-			return;
-		}
+			//  Defining value variables
+			final double value1 = Double.parseDouble(String.valueOf(((EditText) findViewById(R.id.value1)).getText()));
+			final double value2 = Double.parseDouble(String.valueOf(((EditText) findViewById(R.id.value2)).getText()));
 
-		switch(tag) {
-			case "add":
-				result.setText(getApplicationContext().getResources().getString(R.string.result)+ " " + (value1 + value2));
-				break;
-			case "sub":
-				result.setText(getApplicationContext().getResources().getString(R.string.result)+ " " + (value1 - value2));
-				break;
-			case "mul":
-				result.setText(getApplicationContext().getResources().getString(R.string.result)+ " " + (value1 * value2));
-				break;
-			case "div":
-				if(value2 == 0) {
-					result.setText(getApplicationContext().getResources().getString(R.string.divisionByZero));
-				} else {
-					result.setText(getApplicationContext().getResources().getString(R.string.result)+ " " + (value1 / value2));
+			try {
+				//  Setting operation result
+				switch(tag) {
+					case "add":
+						result.setText(getResourceString(R.string.result) + " " + (value1 + value2));
+						break;
+					case "sub":
+						result.setText(getResourceString(R.string.result) + " " + (value1 - value2));
+						break;
+					case "mul":
+						result.setText(getResourceString(R.string.result) + " " + (value1 * value2));
+						break;
+					case "div":
+						if(value2 == 0) {
+							result.setText(getResourceString(R.string.divisionByZero));
+						} else {
+							result.setText(getResourceString(R.string.result) + " " + (value1 / value2));
+						}
+						break;
+					default:
+						break;
 				}
-				break;
-			default:
-				break;
+			} catch(Exception e) {
+				Log.e("Error", Objects.requireNonNull(e.getMessage()));
+				result.setText(getResourceString(R.string.error));
+			}
+		} catch(Exception e) {
+			Log.e("Error", Objects.requireNonNull(e.getMessage()));
+			result.setText(getResourceString(R.string.fillFields));
 		}
 	}
 }
