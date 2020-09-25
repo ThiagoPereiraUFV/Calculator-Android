@@ -77,18 +77,10 @@ public class ComplexCalc extends AppCompatActivity {
 				expression.setText("");
 				break;
 			case "result":
-				int index = -1;
-				for(String c : new String[]{"+", "-", "/", "*"}) {
-					index = expression.getText().toString().indexOf(c);
-					if(index != -1) {
-						break;
-					}
-				}
-
 				try {
-					final String[] exp = expression.getText().toString().split("[+\\-*/]");
-					final double v1 = Double.parseDouble(exp[0]), v2 = Double.parseDouble(exp[1]);
-					final String op = Character.toString(expression.getText().toString().charAt(index));
+					final String[] exp = expression.getText().toString().split(" ");
+					final double v1 = Double.parseDouble(exp[0]), v2 = Double.parseDouble(exp[2]);
+					final String op = exp[1];
 
 					if(op.equals("+")) {
 						expression.setText(Double.toString(v1 + v2));
@@ -115,22 +107,37 @@ public class ComplexCalc extends AppCompatActivity {
 				finish();
 				return;
 			default:
-				if(btn.matches("[+\\-*/]")) {
+				if(btn.matches("[*/]")) {
 					if(expression.getText().length() == 0) {
 						break;
-					} else if(expression.getText().toString().contains("+") || expression.getText().toString().contains("-") ||
-							expression.getText().toString().contains("*") || expression.getText().toString().contains("/")) {
+					} else if(expression.getText().toString().contains("*") || expression.getText().toString().contains("/")) {
 						break;
+					} else {
+						expression.setText(expression.getText() + " " + btn + " ");
+					}
+				} else if(btn.matches("[-+]")) {
+					if(expression.getText().length() == 0) {
+						expression.setText(btn);
+					} else if(Character.toString(expression.getText().charAt(expression.getText().length() - 1)).matches("[0-9]")) {
+						expression.setText(expression.getText() + " " + btn + " ");
+						Log.d("DebugCalc", "Adicionou novo símbolo +- n");
+					} else if(Character.toString(expression.getText().charAt(expression.getText().length() - 1)).matches(" ")) {
+						expression.setText(expression.getText() + btn);
+						Log.d("DebugCalc", "Adicionou novo símbolo +- s");
 					}
 				} else if(btn.matches("\\.")) {
 					if(expression.getText().length() == 0) {
 						break;
 					} else if(Character.toString(expression.getText().charAt(expression.getText().length() - 1)).matches("\\.")) {
 						break;
+					} else {
+						expression.setText(expression.getText() + btn);
 					}
+				} else {
+					expression.setText(expression.getText() + btn);
+					Log.d("DebugCalc", "Adicionou novo símbolo");
 				}
-				expression.setText(expression.getText() + btn);
-				Log.d("DebugCalc", "Adicionou novo símbolo");
+				//Log.d("DebugCalc", "Adicionou novo símbolo");
 				break;
 		}
 	}
