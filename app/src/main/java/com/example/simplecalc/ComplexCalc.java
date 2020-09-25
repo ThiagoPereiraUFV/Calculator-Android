@@ -2,19 +2,14 @@ package com.example.simplecalc;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.IOException;
-import java.lang.reflect.Array;
+import java.util.Objects;
 
 public class ComplexCalc extends AppCompatActivity {
 	@Override
@@ -54,9 +49,25 @@ public class ComplexCalc extends AppCompatActivity {
 		Log.d("Ciclo", getLocalClassName() +  ": Activity destruída!");
 	}
 
-	private void toast(String message) {
+	//  Function to show a toast message given a string
+	private void toast(final String message) {
 		final Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG);
 		toast.show();
+	}
+
+	//  Function to return string from resources given id
+	private String getResourceString(final int id) {
+		return getApplicationContext().getResources().getString(id);
+	}
+
+	//  Function to pop the last char from a string and return it given a string
+	private CharSequence popLastChar(final String s) {
+		return s.subSequence(0, s.length() - 1);
+	}
+
+	//  Function to return the last char given a string
+	private String getLastChar(final String s) {
+		return Character.toString(s.charAt(s.length() - 1));
 	}
 
 	public void handleClick(View v) {
@@ -67,13 +78,14 @@ public class ComplexCalc extends AppCompatActivity {
 		//  Defining expression View
 		final EditText expression = (EditText) findViewById(R.id.expression);
 
+		label:
 		switch(tag) {
 			case "backspace":
 				if(expression.getText().length() > 0) {
-					expression.setText(expression.getText().subSequence(0, expression.getText().length() - 1));
+					expression.setText(popLastChar(expression.getText().toString()));
 
-					if(expression.getText().length() > 0 && Character.toString(expression.getText().charAt(expression.getText().length() - 1)).matches(" ")) {
-						expression.setText(expression.getText().subSequence(0, expression.getText().length() - 1));
+					if(expression.getText().length() > 0 && getLastChar(expression.getText().toString()).matches(" ")) {
+						expression.setText(popLastChar(expression.getText().toString()));
 					}
 				}
 				break;
@@ -82,28 +94,40 @@ public class ComplexCalc extends AppCompatActivity {
 				break;
 			case "result":
 				try {
+					//  Getting expression operands and operator
 					final String[] exp = expression.getText().toString().split(" ");
 					final double v1 = Double.parseDouble(exp[0]), v2 = Double.parseDouble(exp[2]);
 					final String op = exp[1];
 
-					if(op.equals("+")) {
-						expression.setText(Double.toString(v1 + v2));
-					} else if(op.equals("-")) {
-						expression.setText(Double.toString(v1 - v2));
-					} else if(op.equals("*")) {
-						expression.setText(Double.toString(v1 * v2));
-					} else if(op.equals("/")){
-						if(v2 != 0) {
-							expression.setText(Double.toString(v1 / v2));
-						} else {
-							toast(getApplicationContext().getResources().getString(R.string.divisionByZero));
-							break;
+					try {
+						switch(op) {
+							case "+":
+								expression.setText(Double.toString(v1 + v2));
+								break;
+							case "-":
+								expression.setText(Double.toString(v1 - v2));
+								break;
+							case "*":
+								expression.setText(Double.toString(v1 * v2));
+								break;
+							case "/":
+								if(v2 != 0) {
+									expression.setText(Double.toString(v1 / v2));
+								} else {
+									Log.e("Error", getResourceString(R.string.divisionByZero));
+									toast(getResourceString(R.string.divisionByZero));
+									break label;
+								}
+								break;
 						}
+					} catch(Exception e) {
+						Log.e("Error", Objects.requireNonNull(e.getMessage()));
+						toast(getResourceString(R.string.error));
+						break;
 					}
 				} catch(Exception e) {
-					final String message = "Erro de sintaxe!";
-					Log.e("DebugCalc", message);
-					toast(getApplicationContext().getResources().getString(R.string.syntaxError));
+					Log.e("Error", Objects.requireNonNull(e.getMessage()));
+					toast(getResourceString(R.string.syntaxError));
 					break;
 				}
 				break;
@@ -111,40 +135,45 @@ public class ComplexCalc extends AppCompatActivity {
 				finish();
 				return;
 			default:
-				if(btn.matches("[*/]")) {
-					if(expression.getText().length() == 0) {
-						break;
-					} else if(expression.getText().toString().contains("*") || expression.getText().toString().contains("/")) {
-						break;
+				try {
+					if(btn.matches("[*/]")) {
+						if(expression.getText().length() == 0) {
+							break;
+						} else if(expression.getText().toString().contains("*") || expression.getText().toString().contains("/")) {
+							break;
+						} else {
+							expression.setText(expression.getText() + " " + btn + " ");
+						}
+					} else if(btn.matches("[-+]")) {
+						if(expression.getText().length() == 0) {
+							expression.setText(btn);
+						} else if(getLastChar(expression.getText().toString()).matches("[0-9]")) {
+							expression.setText(expression.getText() + " " + btn + " ");
+						} else if(getLastChar(expression.getText().toString()).matches(" ")) {
+							expression.setText(expression.getText() + btn);
+						} else if(getLastChar(expression.getText().toString()).matches("[*/]")) {
+							expression.setText(expression.getText() + " " + btn);
+						}
+					} else if(btn.matches("\\.")) {
+						if(expression.getText().length() == 0) {
+							break;
+						} else if(getLastChar(expression.getText().toString()).matches("\\.")) {
+							break;
+						} else {
+							expression.setText(expression.getText() + btn);
+						}
 					} else {
-						expression.setText(expression.getText() + " " + btn + " ");
+						if(expression.getText().length() == 0) {
+							expression.setText(btn);
+						} else if(getLastChar(expression.getText().toString()).matches("[*/]")) {
+							expression.setText(expression.getText() + " " + btn);
+						} else {
+							expression.setText(expression.getText() + btn);
+						}
 					}
-				} else if(btn.matches("[-+]")) {
-					if(expression.getText().length() == 0) {
-						expression.setText(btn);
-					} else if(Character.toString(expression.getText().charAt(expression.getText().length() - 1)).matches("[0-9]")) {
-						expression.setText(expression.getText() + " " + btn + " ");
-					} else if(Character.toString(expression.getText().charAt(expression.getText().length() - 1)).matches(" ")) {
-						expression.setText(expression.getText() + btn);
-					} else if(Character.toString(expression.getText().charAt(expression.getText().length() - 1)).matches("[*/]")) {
-						expression.setText(expression.getText() + " " + btn);
-					}
-				} else if(btn.matches("\\.")) {
-					if(expression.getText().length() == 0) {
-						break;
-					} else if(Character.toString(expression.getText().charAt(expression.getText().length() - 1)).matches("\\.")) {
-						break;
-					} else {
-						expression.setText(expression.getText() + btn);
-					}
-				} else {
-					if(expression.getText().length() == 0) {
-						expression.setText(btn);
-					} else if(Character.toString(expression.getText().charAt(expression.getText().length() - 1)).matches("[*/]")) {
-						expression.setText(expression.getText() + " " + btn);
-					} else {
-						expression.setText(expression.getText() + btn);
-					}
+				} catch(Exception e) {
+					Log.e("Error", Objects.requireNonNull(e.getMessage()));
+					toast(getResourceString(R.string.error));
 				}
 				break;
 		}

@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
 						break;
 					case "div":
 						if(value2 == 0) {
+							Log.e("Error", getResourceString(R.string.divisionByZero));
 							result.setText(getResourceString(R.string.divisionByZero));
 						} else {
 							result.setText(getResourceString(R.string.result) + " " + (value1 / value2));
