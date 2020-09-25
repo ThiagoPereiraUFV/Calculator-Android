@@ -70,25 +70,25 @@ public class MainActivity extends AppCompatActivity {
 			value1 = Double.parseDouble(String.valueOf(((EditText) findViewById(R.id.value1)).getText()));
 			value2 = Double.parseDouble(String.valueOf(((EditText) findViewById(R.id.value2)).getText()));
 		} catch(Exception e) {
-			result.setText("Preencha os dois campos!");
+			result.setText(getApplicationContext().getResources().getString(R.string.fillFields));
 			return;
 		}
 
 		switch(tag) {
 			case "add":
-				result.setText("O resultado é: " + (value1 + value2));
+				result.setText(getApplicationContext().getResources().getString(R.string.result)+ " " + (value1 + value2));
 				break;
 			case "sub":
-				result.setText("O resultado é: " + (value1 - value2));
+				result.setText(getApplicationContext().getResources().getString(R.string.result)+ " " + (value1 - value2));
 				break;
 			case "mul":
-				result.setText("O resultado é: " + (value1 * value2));
+				result.setText(getApplicationContext().getResources().getString(R.string.result)+ " " + (value1 * value2));
 				break;
 			case "div":
 				if(value2 == 0) {
-					result.setText("Divisão por zero é ilegal!");
+					result.setText(getApplicationContext().getResources().getString(R.string.divisionByZero));
 				} else {
-					result.setText("O resultado é: " + (value1 / value2));
+					result.setText(getApplicationContext().getResources().getString(R.string.result)+ " " + (value1 / value2));
 				}
 				break;
 			default:

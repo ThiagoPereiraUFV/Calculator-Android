@@ -10,7 +10,7 @@
         android:id="@+id/changeCalc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Simple"
+        android:text="@string/simpleCalc"
         android:tag="change"
         android:onClick="handleClick"
         app:layout_constraintTop_toTopOf="parent"

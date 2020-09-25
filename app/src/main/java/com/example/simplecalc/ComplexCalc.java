@@ -96,13 +96,18 @@ public class ComplexCalc extends AppCompatActivity {
 						expression.setText(Double.toString(v1 - v2));
 					} else if(op.equals("*")) {
 						expression.setText(Double.toString(v1 * v2));
-					} else if(op.equals("/") && v2 > 0){
-						expression.setText(Double.toString(v1 / v2));
+					} else if(op.equals("/")){
+						if(v2 != 0) {
+							expression.setText(Double.toString(v1 / v2));
+						} else {
+							toast(getApplicationContext().getResources().getString(R.string.divisionByZero));
+							break;
+						}
 					}
 				} catch(Exception e) {
 					final String message = "Erro de sintaxe!";
 					Log.e("DebugCalc", message);
-					toast(message);
+					toast(getApplicationContext().getResources().getString(R.string.syntaxError));
 					break;
 				}
 				break;
