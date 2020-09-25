@@ -71,6 +71,10 @@ public class ComplexCalc extends AppCompatActivity {
 			case "backspace":
 				if(expression.getText().length() > 0) {
 					expression.setText(expression.getText().subSequence(0, expression.getText().length() - 1));
+
+					if(expression.getText().length() > 0 && Character.toString(expression.getText().charAt(expression.getText().length() - 1)).matches(" ")) {
+						expression.setText(expression.getText().subSequence(0, expression.getText().length() - 1));
+					}
 				}
 				break;
 			case "clear":
@@ -120,10 +124,10 @@ public class ComplexCalc extends AppCompatActivity {
 						expression.setText(btn);
 					} else if(Character.toString(expression.getText().charAt(expression.getText().length() - 1)).matches("[0-9]")) {
 						expression.setText(expression.getText() + " " + btn + " ");
-						Log.d("DebugCalc", "Adicionou novo símbolo +- n");
 					} else if(Character.toString(expression.getText().charAt(expression.getText().length() - 1)).matches(" ")) {
 						expression.setText(expression.getText() + btn);
-						Log.d("DebugCalc", "Adicionou novo símbolo +- s");
+					} else if(Character.toString(expression.getText().charAt(expression.getText().length() - 1)).matches("[*/]")) {
+						expression.setText(expression.getText() + " " + btn);
 					}
 				} else if(btn.matches("\\.")) {
 					if(expression.getText().length() == 0) {
@@ -134,10 +138,14 @@ public class ComplexCalc extends AppCompatActivity {
 						expression.setText(expression.getText() + btn);
 					}
 				} else {
-					expression.setText(expression.getText() + btn);
-					Log.d("DebugCalc", "Adicionou novo símbolo");
+					if(expression.getText().length() == 0) {
+						expression.setText(btn);
+					} else if(Character.toString(expression.getText().charAt(expression.getText().length() - 1)).matches("[*/]")) {
+						expression.setText(expression.getText() + " " + btn);
+					} else {
+						expression.setText(expression.getText() + btn);
+					}
 				}
-				//Log.d("DebugCalc", "Adicionou novo símbolo");
 				break;
 		}
 	}
