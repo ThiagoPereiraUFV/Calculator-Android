@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:text="@string/simpleCalc"
         android:tag="change"
+        android:textSize="20sp"
         android:onClick="handleClick"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -61,6 +62,7 @@
                 android:onClick="handleClick"
                 android:tag="seven"
                 android:text="7"
+                android:textSize="40sp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -73,6 +75,7 @@
                 android:onClick="handleClick"
                 android:tag="eight"
                 android:text="8"
+                android:textSize="40sp"
                 app:layout_constraintLeft_toRightOf="@id/seven"
                 app:layout_constraintTop_toTopOf="@id/seven" />
 
@@ -85,6 +88,7 @@
                 android:onClick="handleClick"
                 android:tag="nine"
                 android:text="9"
+                android:textSize="40sp"
                 app:layout_constraintLeft_toRightOf="@id/eight"
                 app:layout_constraintTop_toTopOf="@id/seven" />
 
@@ -97,6 +101,7 @@
                 android:onClick="handleClick"
                 android:tag="four"
                 android:text="4"
+                android:textSize="40sp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/seven" />
 
@@ -109,6 +114,7 @@
                 android:onClick="handleClick"
                 android:tag="five"
                 android:text="5"
+                android:textSize="40sp"
                 app:layout_constraintLeft_toRightOf="@id/four"
                 app:layout_constraintTop_toTopOf="@id/four" />
 
@@ -121,6 +127,7 @@
                 android:onClick="handleClick"
                 android:tag="six"
                 android:text="6"
+                android:textSize="40sp"
                 app:layout_constraintLeft_toRightOf="@id/five"
                 app:layout_constraintTop_toTopOf="@id/four" />
 
@@ -142,6 +149,7 @@
                     android:onClick="handleClick"
                     android:tag="one"
                     android:text="1"
+                    android:textSize="40sp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -154,6 +162,7 @@
                     android:onClick="handleClick"
                     android:tag="two"
                     android:text="2"
+                    android:textSize="40sp"
                     app:layout_constraintLeft_toRightOf="@id/one"
                     app:layout_constraintTop_toTopOf="@id/one" />
 
@@ -166,6 +175,7 @@
                     android:onClick="handleClick"
                     android:tag="zero"
                     android:text="0"
+                    android:textSize="40sp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/one" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -179,6 +189,7 @@
                 android:onClick="handleClick"
                 android:tag="three"
                 android:text="3"
+                android:textSize="40sp"
                 app:layout_constraintLeft_toRightOf="@id/group32"
                 app:layout_constraintTop_toTopOf="@id/group32" />
 
@@ -191,6 +202,7 @@
                 android:onClick="handleClick"
                 android:tag="dot"
                 android:text="."
+                android:textSize="40sp"
                 app:layout_constraintLeft_toRightOf="@id/group32"
                 app:layout_constraintTop_toBottomOf="@id/three" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -213,6 +225,7 @@
                 android:onClick="handleClick"
                 android:tag="div"
                 android:text="/"
+                android:textSize="40sp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -225,6 +238,7 @@
                 android:onClick="handleClick"
                 android:tag="backspace"
                 android:text="@string/backspace"
+                android:textSize="40sp"
                 app:layout_constraintLeft_toRightOf="@id/div"
                 app:layout_constraintTop_toTopOf="@id/div" />
 
@@ -237,6 +251,7 @@
                 android:onClick="handleClick"
                 android:tag="mul"
                 android:text="*"
+                android:textSize="40sp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/div" />
 
@@ -249,6 +264,7 @@
                 android:onClick="handleClick"
                 android:tag="clear"
                 android:text="C"
+                android:textSize="40sp"
                 app:layout_constraintLeft_toRightOf="@id/mul"
                 app:layout_constraintTop_toTopOf="@id/mul" />
 
@@ -270,6 +286,7 @@
                     android:onClick="handleClick"
                     android:tag="sub"
                     android:text="-"
+                    android:textSize="40sp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -282,6 +299,7 @@
                     android:onClick="handleClick"
                     android:tag="add"
                     android:text="+"
+                    android:textSize="40sp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/sub" />
 
@@ -294,6 +312,7 @@
                     android:onClick="handleClick"
                     android:tag="result"
                     android:text="="
+                    android:textSize="40sp"
                     app:layout_constraintLeft_toRightOf="@id/add"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
