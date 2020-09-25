@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ComplexCalc"
-            android:label="CompleteCalc">>
+            android:label="CompleteCalc">
         </activity>
         <activity
             android:name=".MainActivity"
