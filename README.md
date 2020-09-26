@@ -1,4 +1,4 @@
-## Calculator Android by Thiago Marinho Pereira
+## Android Calculator by Thiago Marinho Pereira
 
 *First practice lesson of Mobile Development class INF 311*
 																			
