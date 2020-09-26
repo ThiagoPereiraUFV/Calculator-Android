@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.util.Objects;
 
 public class ComplexCalc extends AppCompatActivity {
@@ -113,7 +114,7 @@ public class ComplexCalc extends AppCompatActivity {
 								break;
 							case "/":
 								if(!v2.equals(new BigDecimal("0"))) {
-									expression.setText(v1.divide(v2).toString());
+									expression.setText(v1.divide(v2, MathContext.DECIMAL128).toString());
 								} else {
 									Log.e("Error", getResourceString(R.string.divisionByZero));
 									toast(getResourceString(R.string.divisionByZero));

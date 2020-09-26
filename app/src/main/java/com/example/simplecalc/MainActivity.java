@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
@@ -91,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 							Log.e("Error", getResourceString(R.string.divisionByZero));
 							result.setText(getResourceString(R.string.divisionByZero));
 						} else {
-							result.setText(getResourceString(R.string.result) + " " + value1.divide(value2));
+							result.setText(getResourceString(R.string.result) + " " + value1.divide(value2, MathContext.DECIMAL128));
 						}
 						break;
 					default:
