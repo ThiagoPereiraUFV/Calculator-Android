@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
@@ -69,27 +70,27 @@ public class MainActivity extends AppCompatActivity {
 
 		try {
 			//  Defining value variables
-			final double value1 = Double.parseDouble(String.valueOf(((EditText) findViewById(R.id.value1)).getText()));
-			final double value2 = Double.parseDouble(String.valueOf(((EditText) findViewById(R.id.value2)).getText()));
+			final BigDecimal value1 = new BigDecimal(String.valueOf(((EditText) findViewById(R.id.value1)).getText()));
+			final BigDecimal value2 = new BigDecimal(String.valueOf(((EditText) findViewById(R.id.value2)).getText()));
 
 			try {
 				//  Setting operation result
 				switch(tag) {
 					case "add":
-						result.setText(getResourceString(R.string.result) + " " + (value1 + value2));
+						result.setText(getResourceString(R.string.result) + " " + value1.add(value2));
 						break;
 					case "sub":
-						result.setText(getResourceString(R.string.result) + " " + (value1 - value2));
+						result.setText(getResourceString(R.string.result) + " " + value1.subtract(value2));
 						break;
 					case "mul":
-						result.setText(getResourceString(R.string.result) + " " + (value1 * value2));
+						result.setText(getResourceString(R.string.result) + " " + value1.multiply(value2));
 						break;
 					case "div":
-						if(value2 == 0) {
+						if(value2.equals(0)) {
 							Log.e("Error", getResourceString(R.string.divisionByZero));
 							result.setText(getResourceString(R.string.divisionByZero));
 						} else {
-							result.setText(getResourceString(R.string.result) + " " + (value1 / value2));
+							result.setText(getResourceString(R.string.result) + " " + value1.divide(value2));
 						}
 						break;
 					default:

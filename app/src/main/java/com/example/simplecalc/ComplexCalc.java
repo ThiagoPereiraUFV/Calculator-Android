@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public class ComplexCalc extends AppCompatActivity {
@@ -96,23 +97,23 @@ public class ComplexCalc extends AppCompatActivity {
 				try {
 					//  Getting expression operands and operator
 					final String[] exp = expression.getText().toString().split(" ");
-					final double v1 = Double.parseDouble(exp[0]), v2 = Double.parseDouble(exp[2]);
+					final BigDecimal v1 = new BigDecimal(exp[0]), v2 = new BigDecimal(exp[2]);
 					final String op = exp[1];
 
 					try {
 						switch(op) {
 							case "+":
-								expression.setText(Double.toString(v1 + v2));
+								expression.setText(v1.add(v2).toString());
 								break;
 							case "-":
-								expression.setText(Double.toString(v1 - v2));
+								expression.setText(v1.subtract(v2).toString());
 								break;
 							case "*":
-								expression.setText(Double.toString(v1 * v2));
+								expression.setText(v1.multiply(v2).toString());
 								break;
 							case "/":
-								if(v2 != 0) {
-									expression.setText(Double.toString(v1 / v2));
+								if(v2.equals(0)) {
+									expression.setText(v1.divide(v2).toString());
 								} else {
 									Log.e("Error", getResourceString(R.string.divisionByZero));
 									toast(getResourceString(R.string.divisionByZero));

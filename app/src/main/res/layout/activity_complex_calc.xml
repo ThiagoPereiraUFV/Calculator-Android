@@ -29,6 +29,7 @@
         android:textAlignment="viewEnd"
         android:inputType="text"
         android:enabled="false"
+        android:maxLength="14"
         app:layout_constraintTop_toBottomOf="@id/changeCalc"
         app:layout_constraintBottom_toTopOf="@id/calcButtons"
         app:layout_constraintLeft_toLeftOf="parent"
