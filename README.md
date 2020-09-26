@@ -16,7 +16,7 @@
 
 * Android Development Kit - Android Studio (API level 19 or higher) - [Official Website](https://developer.android.com/studio)
 * Java Development Kit - Java 14.0.1 - [Official Website](https://www.oracle.com/java/technologies/javase-downloads.html)
-* Smarphone for testing - Xiaomi Redmi 5 Android 8.1.0 (Updated) - [Full Specs](https://www.gsmarena.com/xiaomi_redmi_5-8768.php)
+* Testing device - Xiaomi Redmi 5 Android 8.1.0 (Updated) - [Full Specs](https://www.gsmarena.com/xiaomi_redmi_5-8768.php)
 
 ## Features
 
