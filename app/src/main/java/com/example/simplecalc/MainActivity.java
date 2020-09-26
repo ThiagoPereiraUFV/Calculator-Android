@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		Log.d("Ciclo", getLocalClassName() +  ": Activity criada!");
 		setContentView(R.layout.activity_main);
+		setTitle(R.string.mainActivitytitle);
 	}
 
 	protected void onStart() {
@@ -86,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
 						result.setText(getResourceString(R.string.result) + " " + value1.multiply(value2));
 						break;
 					case "div":
-						if(value2.equals(0)) {
+						if(value2.equals(new BigDecimal("0"))) {
 							Log.e("Error", getResourceString(R.string.divisionByZero));
 							result.setText(getResourceString(R.string.divisionByZero));
 						} else {

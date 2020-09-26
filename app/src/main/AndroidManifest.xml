@@ -11,12 +11,11 @@
         android:theme="@style/SimpleCalcTheme">
         <activity
             android:name=".ComplexCalc"
-            android:label="CompleteCalc"
+            android:label="@string/secondaryActivityTitle"
             android:theme="@style/CompleteCalcTheme">
         </activity>
         <activity
             android:name=".MainActivity"
-            android:label="SimpleCalc"
             android:theme="@style/SimpleCalcTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

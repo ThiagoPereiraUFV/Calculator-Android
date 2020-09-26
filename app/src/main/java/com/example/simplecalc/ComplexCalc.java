@@ -112,7 +112,7 @@ public class ComplexCalc extends AppCompatActivity {
 								expression.setText(v1.multiply(v2).toString());
 								break;
 							case "/":
-								if(v2.equals(0)) {
+								if(!v2.equals(new BigDecimal("0"))) {
 									expression.setText(v1.divide(v2).toString());
 								} else {
 									Log.e("Error", getResourceString(R.string.divisionByZero));

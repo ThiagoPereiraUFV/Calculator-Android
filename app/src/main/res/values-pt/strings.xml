@@ -10,4 +10,6 @@
     <string name="simpleCalc">Simples</string>
     <string name="fillFields">Preencha os dois campos com números!</string>
     <string name="error">Erro!</string>
+    <string name="mainActivitytitle">SimpleCalc</string>
+    <string name="secondaryActivityTitle">CompleteCalc</string>
 </resources>
