@@ -1,13 +1,15 @@
 ## Android Calculator by Thiago Marinho Pereira
 
 *First practice lesson of Mobile Development class INF 311*
-																			
+
+## Screenshots
+
 <p align="center" width="100%">
 	<img src="https://rb.gy/ymru3o" width="300px" height="auto" alt="Simple calculator screenshot" />
 	<img src="https://rb.gy/f2y90c" width="300px" height="auto" alt="Complete calculator screenshot" />
 </p>
 <p align="center" width="100%">
-	<i>App screenshots - taken from Xiaomi Redmi 5</i>
+	<i>App screenshots (taken from Xiaomi Redmi 5)</i>
 </p>
 
 Used in this project:
