@@ -14,7 +14,7 @@ Used in this project:
 
 * Android Development Kit - Android Studio - [Official Website](https://developer.android.com/studio)
 * Java Development Kit - Java 14.0.1 - [Official Website](https://www.oracle.com/java/technologies/javase-downloads.html)
-* Smarphone for testing - Xiaomi Redmi 5 Android 8.1.0 (Updated) - [Full Spec](https://www.gsmarena.com/xiaomi_redmi_5-8768.php)
+* Smarphone for testing - Xiaomi Redmi 5 Android 8.1.0 (Updated) - [Full Specs](https://www.gsmarena.com/xiaomi_redmi_5-8768.php)
 
 ## Features
 
