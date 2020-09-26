@@ -1,5 +1,6 @@
 ## Calculator Android by Thiago Marinho Pereira
-First practice lesson of Mobile Development class INF 311
+
+*First practice lesson of Mobile Development class INF 311*
 
 Used in this project:
 
