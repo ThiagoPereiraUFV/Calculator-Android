@@ -12,7 +12,7 @@
 	<i>App screenshots (taken from Xiaomi Redmi 5)</i>
 </p>
 
-Used in this project:
+## Project tools
 
 * Android Development Kit - Android Studio - [Official Website](https://developer.android.com/studio)
 * Java Development Kit - Java 14.0.1 - [Official Website](https://www.oracle.com/java/technologies/javase-downloads.html)
