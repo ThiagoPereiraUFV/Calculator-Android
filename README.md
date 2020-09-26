@@ -19,6 +19,6 @@ Used in this project:
 
 ### Complete Calculator
 
-* Support 14 visible symbols on the screen
+* Support 32 visible symbols on the screen
 * Support on screen big buttons to ease calculations
 * Support clear and backspace buttons to fix mistyping
