@@ -1,6 +1,11 @@
 ## Calculator Android by Thiago Marinho Pereira
 
 *First practice lesson of Mobile Development class INF 311*
+																			
+<p align="center" width="100%">
+	<img src="https://rb.gy/ymru3o" width="300px" height="auto" alt="Simple calculator screenshot" />
+	<img src="https://rb.gy/f2y90c" width="300px" height="auto" alt="Complete calculator screenshot" />
+</p>
 
 Used in this project:
 
